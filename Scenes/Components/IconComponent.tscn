@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cyc3e7hkty7f3"]
+
+[ext_resource type="Script" uid="uid://dtqpfau43xy2q" path="res://Scripts/Components/icon_component.gd" id="1_3q4ar"]
+
+[node name="IconComponent" type="Node"]
+script = ExtResource("1_3q4ar")

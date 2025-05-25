@@ -15,4 +15,3 @@ var icon_map := {
 
 func get_icon_id(key: int) -> String:
 	return icon_map.get(key, null)
-	

@@ -1,8 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://2qv3jg6fwbo"]
+[gd_scene load_steps=3 format=3 uid="uid://2qv3jg6fwbo"]
 
 [ext_resource type="Script" uid="uid://e4168dx6pwuk" path="res://Scripts/icon_slot.gd" id="1_cqy5o"]
+[ext_resource type="PackedScene" uid="uid://cyc3e7hkty7f3" path="res://Scenes/Components/IconComponent.tscn" id="2_6h7ir"]
 
-[node name="IconSlot" type="Node2D"]
+[node name="IconSlot" type="Node2D" groups=["IconSlot"]]
 script = ExtResource("1_cqy5o")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -13,3 +14,5 @@ offset_bottom = 32.0
 
 [node name="Icon" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
+
+[node name="IconComponent" parent="." instance=ExtResource("2_6h7ir")]

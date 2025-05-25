@@ -13,7 +13,12 @@ config_version=5
 config/name="Cadot"
 run/main_scene="uid://b0xi60msqjyog"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://ciy3nsqagst2c"
+
+[display]
+
+window/stretch/mode="canvas_items"
+window/icon="uid://ciy3nsqagst2c"
 
 [file_customization]
 
@@ -22,3 +27,7 @@ folder_colors={
 "res://Scenes/": "purple",
 "res://Scripts/": "orange"
 }
+
+[global_group]
+
+IconSlot=""

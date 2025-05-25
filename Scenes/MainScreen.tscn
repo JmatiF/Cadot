@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://b0xi60msqjyog"]
+[gd_scene load_steps=2 format=3 uid="uid://b0xi60msqjyog"]
+
+[ext_resource type="PackedScene" uid="uid://bt14anogtdard" path="res://Scenes/CardPanel.tscn" id="1_s7h0p"]
 
 [node name="MainScreen" type="Node2D"]
 
@@ -21,4 +23,6 @@ offset_right = 576.0
 offset_bottom = 324.0
 grow_horizontal = 2
 grow_vertical = 2
-alignment = 1
+
+[node name="CardPanel" parent="CanvasLayer/HBoxContainer" instance=ExtResource("1_s7h0p")]
+position = Vector2(435, 250)

@@ -1,0 +1,53 @@
+[gd_scene load_steps=3 format=3 uid="uid://bt14anogtdard"]
+
+[ext_resource type="Script" uid="uid://bt7c3x4w7q8wr" path="res://Scripts/card_panel.gd" id="1_bjdpd"]
+[ext_resource type="PackedScene" uid="uid://2qv3jg6fwbo" path="res://Scenes/IconSlot.tscn" id="1_xi3nn"]
+
+[node name="CardPanel" type="Node2D"]
+script = ExtResource("1_bjdpd")
+
+[node name="Slots" type="Node2D" parent="."]
+
+[node name="IconSlot" parent="Slots" instance=ExtResource("1_xi3nn")]
+
+[node name="IconSlot2" parent="Slots" instance=ExtResource("1_xi3nn")]
+position = Vector2(0, 70)
+
+[node name="IconSlot3" parent="Slots" instance=ExtResource("1_xi3nn")]
+position = Vector2(0, 140)
+
+[node name="IconSlot4" parent="Slots" instance=ExtResource("1_xi3nn")]
+position = Vector2(70, 0)
+
+[node name="IconSlot5" parent="Slots" instance=ExtResource("1_xi3nn")]
+position = Vector2(70, 70)
+
+[node name="IconSlot6" parent="Slots" instance=ExtResource("1_xi3nn")]
+position = Vector2(70, 140)
+
+[node name="IconSlot7" parent="Slots" instance=ExtResource("1_xi3nn")]
+position = Vector2(140, 0)
+
+[node name="IconSlot8" parent="Slots" instance=ExtResource("1_xi3nn")]
+position = Vector2(140, 70)
+
+[node name="IconSlot9" parent="Slots" instance=ExtResource("1_xi3nn")]
+position = Vector2(140, 140)
+
+[node name="IconSlot10" parent="Slots" instance=ExtResource("1_xi3nn")]
+position = Vector2(210, 0)
+
+[node name="IconSlot11" parent="Slots" instance=ExtResource("1_xi3nn")]
+position = Vector2(210, 70)
+
+[node name="IconSlot12" parent="Slots" instance=ExtResource("1_xi3nn")]
+position = Vector2(210, 140)
+
+[node name="IconSlot13" parent="Slots" instance=ExtResource("1_xi3nn")]
+position = Vector2(280, 0)
+
+[node name="IconSlot14" parent="Slots" instance=ExtResource("1_xi3nn")]
+position = Vector2(280, 70)
+
+[node name="IconSlot15" parent="Slots" instance=ExtResource("1_xi3nn")]
+position = Vector2(280, 140)

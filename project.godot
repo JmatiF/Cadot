@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Cadot"
+run/main_scene="uid://b0xi60msqjyog"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlmc4blcqw7ar"]
+
+[ext_resource type="Script" uid="uid://c6of5821pawqk" path="res://Scripts/Components/spin_chances_component.gd" id="1_w1efr"]
+
+[node name="SpinChancesComponent" type="Node"]
+script = ExtResource("1_w1efr")

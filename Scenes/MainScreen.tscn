@@ -25,4 +25,5 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="CardPanel" parent="CanvasLayer/HBoxContainer" instance=ExtResource("1_s7h0p")]
-position = Vector2(435, 250)
+position = Vector2(345, 210)
+scale = Vector2(1.65, 1.65)

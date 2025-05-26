@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://ci537p3jhfenx"]
+
+[ext_resource type="Texture2D" uid="uid://ejox6y27k7he" path="res://Art/Icons/Wildcard/Spin.png" id="1_ixhny"]
+[ext_resource type="Script" uid="uid://6tf2v5w13ppo" path="res://Scripts/Spin/spin_button.gd" id="2_7jrq7"]
+
+[node name="Button" type="Button"]
+button_mask = 3
+icon = ExtResource("1_ixhny")
+alignment = 0
+icon_alignment = 1
+script = ExtResource("2_7jrq7")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

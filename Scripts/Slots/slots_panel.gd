@@ -4,9 +4,9 @@ extends Node2D
 @onready var spin_chances : Node = $"SpinChances"
 
 func _ready() -> void:
-	card_slots()
+	change_slots()
 
-func card_slots():
+func change_slots():
 	for id in 15:
 		var card = spin_chances.pick_card_group_based()
 		

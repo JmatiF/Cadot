@@ -1,11 +1,11 @@
 [gd_scene load_steps=5 format=3 uid="uid://bt14anogtdard"]
 
-[ext_resource type="Script" uid="uid://bt7c3x4w7q8wr" path="res://Scripts/card_panel.gd" id="1_dmlxd"]
-[ext_resource type="PackedScene" uid="uid://2qv3jg6fwbo" path="res://Scenes/IconSlot.tscn" id="2_nbwu5"]
-[ext_resource type="Script" uid="uid://c6nwoc5w3y2fk" path="res://Scripts/slots.gd" id="2_npwgh"]
-[ext_resource type="Script" uid="uid://c6of5821pawqk" path="res://Scripts/spin_chances.gd" id="4_npwgh"]
+[ext_resource type="Script" uid="uid://bt7c3x4w7q8wr" path="res://Scripts/Slots/slots_panel.gd" id="1_dmlxd"]
+[ext_resource type="PackedScene" uid="uid://2qv3jg6fwbo" path="res://Scenes/Slots/IconSlot.tscn" id="2_nbwu5"]
+[ext_resource type="Script" uid="uid://c6nwoc5w3y2fk" path="res://Scripts/Slots/slots.gd" id="2_npwgh"]
+[ext_resource type="Script" uid="uid://c6of5821pawqk" path="res://Scripts/Spin/spin_chances.gd" id="4_npwgh"]
 
-[node name="CardPanel" type="Node2D"]
+[node name="SlotsPanel" type="Node2D"]
 script = ExtResource("1_dmlxd")
 
 [node name="Slots" type="Node2D" parent="."]

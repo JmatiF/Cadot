@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cihdljcuinfrk" path="res://Scripts/main_screen.gd" id="1_0prsd"]
 [ext_resource type="PackedScene" uid="uid://bt14anogtdard" path="res://Scenes/Slots/SlotsPanel.tscn" id="1_s7h0p"]
-[ext_resource type="PackedScene" uid="uid://ci537p3jhfenx" path="res://Scenes/SpinButton.tscn" id="2_ewbgq"]
+[ext_resource type="PackedScene" uid="uid://ci537p3jhfenx" path="res://Scenes/Spin/SpinButton.tscn" id="2_ewbgq"]
 
 [node name="MainScreen" type="Node2D" groups=["MainScreen"]]
 script = ExtResource("1_0prsd")
@@ -15,8 +15,6 @@ color = Color(0.0903391, 0.30565, 0.378276, 1)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
-offset_right = 1152.0
-offset_bottom = 648.0
 alignment = 1
 
 [node name="SlotsPanel" parent="CanvasLayer/HBoxContainer" instance=ExtResource("1_s7h0p")]
@@ -29,13 +27,51 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -208.0
-offset_top = -96.0
-offset_right = -92.0
-offset_bottom = 90.0
+offset_left = -205.0
+offset_top = -91.0
+offset_right = -96.0
+offset_bottom = 115.0
 grow_horizontal = 0
 grow_vertical = 2
 alignment = 1
 
 [node name="SpinButton" parent="CanvasLayer/ButtonContainer" instance=ExtResource("2_ewbgq")]
 layout_mode = 2
+
+[node name="OptionsContainer" type="BoxContainer" parent="CanvasLayer"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 53.0
+offset_top = -131.0
+offset_right = 194.0
+offset_bottom = 117.0
+grow_vertical = 2
+alignment = 1
+vertical = true
+
+[node name="CentralButton" type="Button" parent="CanvasLayer/OptionsContainer"]
+layout_mode = 2
+text = "Central Line"
+
+[node name="Button" type="Button" parent="CanvasLayer/OptionsContainer"]
+layout_mode = 2
+text = "----------------------"
+flat = true
+
+[node name="HorizontalButton" type="Button" parent="CanvasLayer/OptionsContainer"]
+layout_mode = 2
+text = "Horizontal Line"
+
+[node name="Button2" type="Button" parent="CanvasLayer/OptionsContainer"]
+layout_mode = 2
+text = "----------------------"
+flat = true
+
+[node name="DiagonalButton" type="Button" parent="CanvasLayer/OptionsContainer"]
+layout_mode = 2
+text = "Diagonal Line"
+
+[connection signal="pressed" from="CanvasLayer/OptionsContainer/CentralButton" to="." method="_on_central_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/OptionsContainer/HorizontalButton" to="." method="_on_horizontal_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/OptionsContainer/DiagonalButton" to="." method="_on_diagonal_button_pressed"]

@@ -7,16 +7,14 @@ var wildcard_ids = [7, 8]
 var bonus_ids = [9]
 
 # Group probabilities
-var classic_prob = 0.65
-var wildcard_prob = 0.20
-var bonus_prob = 0.15
+var classic_prob = 0.80
+var wildcard_prob = 0.15
+var bonus_prob = 0.05
 
 func _ready():
 	randomize()
 
-func pick_card_group_based(line : int) -> int:
-	if line:
-		line_type.type_prob(line)
+func pick_card_group_based() -> int:
 	randomize()
 	var r = randf()
 	if r < classic_prob:                                   # randi() big ramdom number
@@ -25,3 +23,16 @@ func pick_card_group_based(line : int) -> int:
 		return wildcard_ids[randi() % wildcard_ids.size()] # % 2
 	else:                                                  # result will by between 1-2
 		return bonus_ids[0]
+
+func classics_append(car_id : int):
+	classic_ids.append(car_id)
+	print(classic_ids)
+
+func classics_pop():
+	classic_ids.pop_back()
+
+func classics_remove():
+	var size = classic_ids.size() -6
+	for i in size:
+		classics_pop()
+	print(classic_ids)

@@ -1,6 +1,5 @@
 extends Node
 
-
 var icon_map := {
 	1 : "res://Art/Icons/Clasics/Bar3.png",
 	2 : "res://Art/Icons/Clasics/Bar5.png",

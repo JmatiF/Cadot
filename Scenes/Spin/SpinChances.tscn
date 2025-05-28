@@ -1,14 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://dvaygrrn6ntvd"]
+[gd_scene load_steps=2 format=3 uid="uid://dvaygrrn6ntvd"]
 
 [ext_resource type="Script" uid="uid://c6of5821pawqk" path="res://Scripts/Spin/spin_chances.gd" id="1_u04ku"]
-[ext_resource type="Script" uid="uid://cfobaa7co7xt0" path="res://Scripts/Spin/SpinChances/line_type.gd" id="2_xh2ek"]
-[ext_resource type="Script" uid="uid://1w4fup4jc6y7" path="res://Scripts/Spin/SpinChances/slots.gd" id="3_4xpdq"]
 
 [node name="SpinChances" type="Node"]
 script = ExtResource("1_u04ku")
-
-[node name="LineType" type="Node" parent="."]
-script = ExtResource("2_xh2ek")
-
-[node name="Slots" type="Node" parent="."]
-script = ExtResource("3_4xpdq")

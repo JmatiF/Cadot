@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bt14anogtdard"]
+[gd_scene load_steps=7 format=3 uid="uid://bt14anogtdard"]
 
 [ext_resource type="Script" uid="uid://bt7c3x4w7q8wr" path="res://Scripts/Slots/slots_panel.gd" id="1_dmlxd"]
 [ext_resource type="PackedScene" uid="uid://2qv3jg6fwbo" path="res://Scenes/Slots/IconSlot.tscn" id="2_nbwu5"]
 [ext_resource type="Script" uid="uid://c6nwoc5w3y2fk" path="res://Scripts/Slots/slots.gd" id="2_npwgh"]
 [ext_resource type="PackedScene" uid="uid://dvaygrrn6ntvd" path="res://Scenes/Spin/SpinChances.tscn" id="4_xyb8e"]
+[ext_resource type="Script" uid="uid://1w4fup4jc6y7" path="res://Scripts/Slots/ChancesControllers/line_types.gd" id="6_r3hys"]
+[ext_resource type="Script" uid="uid://ce4mudykygsh5" path="res://Scripts/Slots/ChancesControllers/slots_controllers.gd" id="7_r3hys"]
 
 [node name="SlotsPanel" type="Node2D"]
 script = ExtResource("1_dmlxd")
@@ -56,3 +58,11 @@ position = Vector2(280, 70)
 position = Vector2(280, 140)
 
 [node name="SpinChances" parent="." instance=ExtResource("4_xyb8e")]
+
+[node name="ChancesControllers" type="Node" parent="."]
+
+[node name="LineTypes" type="Node" parent="ChancesControllers"]
+script = ExtResource("6_r3hys")
+
+[node name="SlotsControllers" type="Node" parent="ChancesControllers"]
+script = ExtResource("7_r3hys")

@@ -1,8 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://b0xi60msqjyog"]
+[gd_scene load_steps=6 format=3 uid="uid://b0xi60msqjyog"]
 
 [ext_resource type="Script" uid="uid://cihdljcuinfrk" path="res://Scripts/main_screen.gd" id="1_0prsd"]
 [ext_resource type="PackedScene" uid="uid://bt14anogtdard" path="res://Scenes/Slots/SlotsPanel.tscn" id="1_s7h0p"]
 [ext_resource type="PackedScene" uid="uid://ci537p3jhfenx" path="res://Scenes/Spin/SpinButton.tscn" id="2_ewbgq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0prsd"]
+font_size = 36
+font_color = Color(0.67562, 0.42158, 0.201014, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ip4yt"]
+font_size = 30
 
 [node name="MainScreen" type="Node2D" groups=["MainScreen"]]
 script = ExtResource("1_0prsd")
@@ -21,7 +28,7 @@ alignment = 1
 position = Vector2(345, 210)
 scale = Vector2(1.65, 1.65)
 
-[node name="ButtonContainer" type="BoxContainer" parent="CanvasLayer"]
+[node name="SpinButtonContainer" type="BoxContainer" parent="CanvasLayer"]
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
@@ -35,53 +42,109 @@ grow_horizontal = 0
 grow_vertical = 2
 alignment = 1
 
-[node name="SpinButton" parent="CanvasLayer/ButtonContainer" instance=ExtResource("2_ewbgq")]
+[node name="SpinButton" parent="CanvasLayer/SpinButtonContainer" instance=ExtResource("2_ewbgq")]
 layout_mode = 2
+focus_mode = 0
 
 [node name="OptionsContainer" type="BoxContainer" parent="CanvasLayer"]
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = 53.0
-offset_top = -158.0
+offset_top = -169.0
 offset_right = 194.0
-offset_bottom = 205.0
+offset_bottom = 175.0
 grow_vertical = 2
 alignment = 1
 vertical = true
 
 [node name="CentralButton" type="Button" parent="CanvasLayer/OptionsContainer"]
 layout_mode = 2
+focus_mode = 0
 text = "Central Line"
 
 [node name="Button" type="Button" parent="CanvasLayer/OptionsContainer"]
 layout_mode = 2
+focus_mode = 0
 text = "----------------------"
 flat = true
 
 [node name="HorizontalButton" type="Button" parent="CanvasLayer/OptionsContainer"]
 layout_mode = 2
+focus_mode = 0
 text = "Horizontal Line"
 
 [node name="Button2" type="Button" parent="CanvasLayer/OptionsContainer"]
 layout_mode = 2
+focus_mode = 0
 text = "----------------------"
 flat = true
 
 [node name="DiagonalButton" type="Button" parent="CanvasLayer/OptionsContainer"]
 layout_mode = 2
-text = "Diagonal Line V"
+focus_mode = 0
+text = "Diagonal Line"
 
-[node name="Button3" type="Button" parent="CanvasLayer/OptionsContainer"]
-layout_mode = 2
-text = "----------------------"
-flat = true
+[node name="CurrentOptionContainer" type="BoxContainer" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -193.0
+offset_top = 59.0
+offset_right = 241.0
+offset_bottom = 113.0
+grow_horizontal = 2
+alignment = 1
+vertical = true
 
-[node name="DiagonalButton2" type="Button" parent="CanvasLayer/OptionsContainer"]
+[node name="CurrentOption" type="Label" parent="CanvasLayer/CurrentOptionContainer"]
 layout_mode = 2
-text = "Diagonal Line Ʌ"
+text = "Current option: Central"
+label_settings = SubResource("LabelSettings_0prsd")
+
+[node name="CurrentPointsContainer" type="BoxContainer" parent="CanvasLayer"]
+offset_left = 294.0
+offset_top = 519.0
+offset_right = 733.0
+offset_bottom = 615.0
+
+[node name="PointsLabel" type="Label" parent="CanvasLayer/CurrentPointsContainer"]
+layout_mode = 2
+text = "Points: 100"
+label_settings = SubResource("LabelSettings_0prsd")
+
+[node name="SumContainer" type="BoxContainer" parent="CanvasLayer"]
+offset_left = 752.0
+offset_top = 519.0
+offset_right = 862.0
+offset_bottom = 615.0
+alignment = 2
+
+[node name="SumLabel" type="Label" parent="CanvasLayer/SumContainer"]
+layout_mode = 2
+text = " +"
+label_settings = SubResource("LabelSettings_0prsd")
+
+[node name="SpinPointsContainer" type="BoxContainer" parent="CanvasLayer"]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -245.0
+offset_top = 118.0
+offset_right = -52.0
+offset_bottom = 214.0
+grow_horizontal = 0
+grow_vertical = 2
+alignment = 1
+
+[node name="SpinPointsLabel" type="Label" parent="CanvasLayer/SpinPointsContainer"]
+layout_mode = 2
+text = "Points to
+spin: 10"
+label_settings = SubResource("LabelSettings_ip4yt")
 
 [connection signal="pressed" from="CanvasLayer/OptionsContainer/CentralButton" to="." method="_on_central_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/OptionsContainer/HorizontalButton" to="." method="_on_horizontal_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/OptionsContainer/DiagonalButton" to="." method="_on_diagonal_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/OptionsContainer/DiagonalButton2" to="." method="_on_diagonal_button_2_pressed"]

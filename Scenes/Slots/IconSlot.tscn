@@ -6,11 +6,19 @@
 [node name="IconSlot" type="Node2D" groups=["IconSlot"]]
 script = ExtResource("1_cqy5o")
 
+[node name="WinnerLights" type="ColorRect" parent="."]
+z_index = -2
+offset_left = -36.0
+offset_top = -36.0
+offset_right = 36.0
+offset_bottom = 36.0
+
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -32.0
-offset_top = -32.0
-offset_right = 32.0
-offset_bottom = 32.0
+z_index = -1
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
 
 [node name="Icon" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)

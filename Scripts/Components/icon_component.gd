@@ -9,7 +9,7 @@ var icon_map := {
 	6 : "res://Art/Icons/Clasics/SevenW.png", # Finish Clasics
 	7 : "res://Art/Icons/Wildcard/Blue.png", # Start Wildcard
 	8 : "res://Art/Icons/Wildcard/Spin.png", # Finish Wildcard
-	9 : "res://Art/Icons/Bonuses/Bunny.png" #Star Finish Bonuses
+	9 : "res://Art/Icons/Bonuses/Bunny.png" #Start and Finish Bonuses
 }
 
 func get_icon_id(key: int) -> String:

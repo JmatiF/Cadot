@@ -9,12 +9,12 @@ var points : float = 0
 var current_points : float = 0
 
 var current_line : Array
+var new_current_line : Array = []
+
 
 func control_array(winner_line : Array, current_slots_array : Array) -> float:
 	slots_array = current_slots_array
 	control_win_condition(winner_line)
-	
-	
 	return control_return()
 
 func control_dictionary(winner_dict : Dictionary, current_slots_array : Array) -> float:
@@ -26,56 +26,64 @@ func control_dictionary(winner_dict : Dictionary, current_slots_array : Array) -
 	
 	return control_return()
 
-func control_return():
-	for id in current_line:
+func control_return() -> float:
+	var return_points = points
+	points = 0
+
+	for id in new_current_line:
 		slots_array[id].winner_lights()
-		print("points: ", points)
-	current_line.clear()
-	return points
+
+	new_current_line.clear()
+	print("Return points: ", return_points)
+	return return_points
+
 
 func control_win_condition(winner_line : Array):
+	current_points = 0
+	winner_card = -1
+	current_slot = 0
+
 	for id in range(slots_array.size()):
-		if current_slot < 5:
-			if id == winner_line[current_slot]:
-				if winner_card == -1:
-					winner_card = control_slot_card(id)
-				elif winner_card == slots_array[id].get_card_id():
-					count_points(slots_array[id].get_card_id())
-				current_slot += 1
+		if current_slot < winner_line.size() and id == winner_line[current_slot]:
+			var card_id = slots_array[id].get_card_id()
+
+			# Step 1 Establish winner card
+			if winner_card == -1:
+				if card_id <= 6:
+					winner_card = card_id
+					if count_points(card_id):
+						current_line.append(id)
+						current_slot += 1
+				else:
+					if count_points(card_id):
+						current_line.append(id)
+						current_slot += 1
+					continue
+				continue
+
+
+			# Step 2 Count points
+			if card_id == winner_card or card_id > 6:
+				if count_points(card_id):
+					current_line.append(id)
+					current_slot += 1
 	
 	actualize_points(winner_line)
+
 
 
 func actualize_points(winner_line : Array):
 	if current_points > points:
 		points = current_points
-		print("Then, current points: ", current_points)
-	print("Then, just points: ", points)
-	print("Then, current line: ", current_line)
-	print("Winner card: ", winner_card)
+		new_current_line = current_line.duplicate()
 	current_points = 0
 	winner_card = -1
 	current_slot = 0
-
-
-func control_slot_card(id : int) -> int:
-	var card_id = slots_array[id].get_card_id()
-	print("CARD ID IS: ", card_id)
-	if card_id <= 6:
-		print("IS THAT ALSO TRUE ===", count_points(card_id))
-		if count_points(card_id):
-			print("here maybe")
-			current_line.append(id)
-		return card_id
-	else:
-		if count_points(card_id):
-			current_line.append(id)
-		return -1
+	current_line.clear()
 
 
 func count_points(card_id : int) -> bool:
 	if card_id == winner_card or card_id > 6:
-		print("IS THAT TRUE ?: ", card_id == winner_card)
 		match card_id:
 			1, 2, 3, 4, 5, 6:
 				current_points += 1

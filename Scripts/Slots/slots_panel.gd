@@ -15,7 +15,7 @@ func _ready() -> void:
 	change_slots(0)
 	spin_chances.classics_remove()
 
-func change_slots(line : int, help : bool = false):
+func change_slots(line : int, help : bool = false) -> float:
 	line_type = line_types.get_line_type(line)
 	slots.winner_lights_off()
 	for id in 15:
@@ -32,9 +32,11 @@ func change_slots(line : int, help : bool = false):
 	added_chances = false
 	
 	if get_winner_line(line) is Array:
-		winner_line_control.control_array(get_winner_line(line) ,slots.get_slots_arrays())
+		return winner_line_control.control_array(get_winner_line(line) ,slots.get_slots_arrays())
 	elif get_winner_line(line) is Dictionary:
-		winner_line_control.control_dictionary(get_winner_line(line), slots.get_slots_arrays())
+		return winner_line_control.control_dictionary(get_winner_line(line), slots.get_slots_arrays())
+	else:
+		return 0
 
 
 func set_line(id):

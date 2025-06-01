@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cihdljcuinfrk" path="res://Scripts/main_screen.gd" id="1_0prsd"]
 [ext_resource type="PackedScene" uid="uid://bt14anogtdard" path="res://Scenes/Slots/SlotsPanel.tscn" id="1_s7h0p"]
-[ext_resource type="PackedScene" uid="uid://ci537p3jhfenx" path="res://Scenes/Spin/SpinButton.tscn" id="2_ewbgq"]
+[ext_resource type="Texture2D" uid="uid://ejox6y27k7he" path="res://Art/Icons/Wildcard/Spin.png" id="3_0prsd"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0prsd"]
 font_size = 36
@@ -42,9 +42,9 @@ grow_horizontal = 0
 grow_vertical = 2
 alignment = 1
 
-[node name="SpinButton" parent="CanvasLayer/SpinButtonContainer" instance=ExtResource("2_ewbgq")]
+[node name="SpinButton" type="Button" parent="CanvasLayer/SpinButtonContainer"]
 layout_mode = 2
-focus_mode = 0
+icon = ExtResource("3_0prsd")
 
 [node name="OptionsContainer" type="BoxContainer" parent="CanvasLayer"]
 anchors_preset = 4
@@ -145,6 +145,7 @@ text = "Points to
 spin: 10"
 label_settings = SubResource("LabelSettings_ip4yt")
 
+[connection signal="pressed" from="CanvasLayer/SpinButtonContainer/SpinButton" to="." method="_on_spin_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/OptionsContainer/CentralButton" to="." method="_on_central_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/OptionsContainer/HorizontalButton" to="." method="_on_horizontal_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/OptionsContainer/DiagonalButton" to="." method="_on_diagonal_button_pressed"]

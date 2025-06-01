@@ -34,7 +34,6 @@ func control_return() -> float:
 		slots_array[id].winner_lights()
 
 	new_current_line.clear()
-	print("Return points: ", return_points)
 	return return_points
 
 

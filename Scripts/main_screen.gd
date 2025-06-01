@@ -21,6 +21,8 @@ func change_slots():
 	sum_label.text = "+ " + str(spin_points)
 
 
+func change_slots_test() -> float:
+	return slots_panel.change_slots(get_line_type())
 
 
 
@@ -45,6 +47,11 @@ func change_line_type(new_type):
 
 func get_line_type() -> int:
 	return current_line_type
+
+func get_points() -> float:
+	return points
+func set_points(value: float) -> void:
+	points = value
 
 
 func _on_spin_button_pressed() -> void:

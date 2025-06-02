@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://b0xi60msqjyog"]
+[gd_scene load_steps=9 format=3 uid="uid://b0xi60msqjyog"]
 
 [ext_resource type="Script" uid="uid://cihdljcuinfrk" path="res://Scripts/main_screen.gd" id="1_0prsd"]
 [ext_resource type="PackedScene" uid="uid://bt14anogtdard" path="res://Scenes/Slots/SlotsPanel.tscn" id="1_s7h0p"]
 [ext_resource type="Texture2D" uid="uid://ejox6y27k7he" path="res://Art/Icons/Wildcard/Spin.png" id="3_0prsd"]
 [ext_resource type="Script" uid="uid://v7fsco1qh6fp" path="res://Scripts/Tests/50_spins_without_cost.gd" id="4_ip4yt"]
-[ext_resource type="Script" uid="uid://bdcsr4oa8q2ci" path="res://Scripts/Tests/50_spins_with_cost.gd" id="5_xg8v3"]
+[ext_resource type="Script" uid="uid://bdcsr4oa8q2ci" path="res://Scripts/Tests/100_spins_with_cost.gd" id="5_xg8v3"]
+[ext_resource type="Script" uid="uid://ccimuikapsk0q" path="res://Scripts/Tests/100_spins_winner_chances.gd" id="6_a6epe"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0prsd"]
 font_size = 36
@@ -152,8 +153,11 @@ label_settings = SubResource("LabelSettings_ip4yt")
 [node name="50SpinsWithoutCost" type="Node" parent="Tests"]
 script = ExtResource("4_ip4yt")
 
-[node name="50SpinsWithCost" type="Node" parent="Tests"]
+[node name="100SpinsWithCost" type="Node" parent="Tests"]
 script = ExtResource("5_xg8v3")
+
+[node name="100SpinsWinnerChances" type="Node" parent="Tests"]
+script = ExtResource("6_a6epe")
 
 [node name="TestsTimer" type="Timer" parent="Tests"]
 wait_time = 0.05
@@ -165,4 +169,5 @@ autostart = true
 [connection signal="pressed" from="CanvasLayer/OptionsContainer/HorizontalButton" to="." method="_on_horizontal_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/OptionsContainer/DiagonalButton" to="." method="_on_diagonal_button_pressed"]
 [connection signal="timeout" from="Tests/TestsTimer" to="Tests/50SpinsWithoutCost" method="_on_tests_timer_timeout"]
-[connection signal="timeout" from="Tests/TestsTimer" to="Tests/50SpinsWithCost" method="_on_tests_timer_timeout"]
+[connection signal="timeout" from="Tests/TestsTimer" to="Tests/100SpinsWithCost" method="_on_tests_timer_timeout"]
+[connection signal="timeout" from="Tests/TestsTimer" to="Tests/100SpinsWinnerChances" method="_on_tests_timer_timeout"]

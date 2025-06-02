@@ -7,4 +7,4 @@ func _on_tests_timer_timeout() -> void:
 	var points : float = 0.0
 	for spins in 50:
 		points += game.change_slots_test()
-	print("50 Spins without cost is equals to: ", points , " points" )
+	print("50 Spins without cost is equal to: ", points , " points" )

@@ -1,11 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://b0xi60msqjyog"]
+[gd_scene load_steps=12 format=3 uid="uid://b0xi60msqjyog"]
 
 [ext_resource type="Script" uid="uid://cihdljcuinfrk" path="res://Scripts/main_screen.gd" id="1_0prsd"]
 [ext_resource type="PackedScene" uid="uid://bt14anogtdard" path="res://Scenes/Slots/SlotsPanel.tscn" id="1_s7h0p"]
-[ext_resource type="Texture2D" uid="uid://ejox6y27k7he" path="res://Art/Icons/Wildcard/Spin.png" id="3_0prsd"]
+[ext_resource type="Texture2D" uid="uid://bg022fok1ixvx" path="res://Art/Spin/Spin.png" id="3_a6epe"]
 [ext_resource type="Script" uid="uid://v7fsco1qh6fp" path="res://Scripts/Tests/50_spins_without_cost.gd" id="4_ip4yt"]
 [ext_resource type="Script" uid="uid://bdcsr4oa8q2ci" path="res://Scripts/Tests/100_spins_with_cost.gd" id="5_xg8v3"]
 [ext_resource type="Script" uid="uid://ccimuikapsk0q" path="res://Scripts/Tests/100_spins_winner_chances.gd" id="6_a6epe"]
+[ext_resource type="Script" uid="uid://d2y2peng5bjp0" path="res://Scripts/MainScreenAnimations/button_animation.gd" id="7_3bkv3"]
+[ext_resource type="Script" uid="uid://bmox7p2ylws7g" path="res://Scripts/MainScreenAnimations/confetti_animation.gd" id="8_enf3m"]
+[ext_resource type="Texture2D" uid="uid://biorows3d7y1q" path="res://Art/Effects/ConfettiLauncher.png" id="8_rm1n3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0prsd"]
 font_size = 36
@@ -37,8 +40,8 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -205.0
-offset_top = -91.0
+offset_left = -227.0
+offset_top = -97.0
 offset_right = -96.0
 offset_bottom = 115.0
 grow_horizontal = 0
@@ -47,7 +50,9 @@ alignment = 1
 
 [node name="SpinButton" type="Button" parent="CanvasLayer/SpinButtonContainer"]
 layout_mode = 2
-icon = ExtResource("3_0prsd")
+focus_mode = 0
+icon = ExtResource("3_a6epe")
+flat = true
 
 [node name="OptionsContainer" type="BoxContainer" parent="CanvasLayer"]
 anchors_preset = 4
@@ -162,12 +167,82 @@ script = ExtResource("6_a6epe")
 [node name="TestsTimer" type="Timer" parent="Tests"]
 wait_time = 0.05
 one_shot = true
-autostart = true
+
+[node name="ButtonAnimation" type="Node" parent="."]
+script = ExtResource("7_3bkv3")
+
+[node name="ButtonTimer" type="Timer" parent="ButtonAnimation"]
+one_shot = true
+
+[node name="ConfettiAnimation" type="CanvasLayer" parent="."]
+script = ExtResource("8_enf3m")
+
+[node name="BoxContainer" type="BoxContainer" parent="ConfettiAnimation"]
+offset_right = 40.0
+offset_bottom = 40.0
+alignment = 1
+
+[node name="ConfettiLauncher" type="Sprite2D" parent="ConfettiAnimation/BoxContainer" groups=["ConfettiLauncher"]]
+position = Vector2(128, 128)
+rotation = 3.14159
+texture = ExtResource("8_rm1n3")
+
+[node name="BoxContainer2" type="BoxContainer" parent="ConfettiAnimation"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -51.0
+offset_bottom = 40.0
+grow_horizontal = 0
+alignment = 1
+
+[node name="ConfettiLauncher" type="Sprite2D" parent="ConfettiAnimation/BoxContainer2" groups=["ConfettiLauncher"]]
+position = Vector2(-80, 128)
+rotation = 4.71239
+texture = ExtResource("8_rm1n3")
+
+[node name="BoxContainer3" type="BoxContainer" parent="ConfettiAnimation"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+grow_vertical = 0
+alignment = 1
+
+[node name="ConfettiLauncher" type="Sprite2D" parent="ConfettiAnimation/BoxContainer3" groups=["ConfettiLauncher"]]
+position = Vector2(128, -90)
+rotation = 1.5708
+texture = ExtResource("8_rm1n3")
+
+[node name="BoxContainer4" type="BoxContainer" parent="ConfettiAnimation"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+alignment = 1
+
+[node name="ConfettiLauncher" type="Sprite2D" parent="ConfettiAnimation/BoxContainer4" groups=["ConfettiLauncher"]]
+position = Vector2(-128, -90)
+texture = ExtResource("8_rm1n3")
+
+[node name="ConfettiTimer" type="Timer" parent="ConfettiAnimation"]
+wait_time = 0.3
+
+[node name="TotalConfettiTimer" type="Timer" parent="ConfettiAnimation"]
+one_shot = true
 
 [connection signal="pressed" from="CanvasLayer/SpinButtonContainer/SpinButton" to="." method="_on_spin_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/SpinButtonContainer/SpinButton" to="ButtonAnimation" method="_on_spin_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/OptionsContainer/CentralButton" to="." method="_on_central_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/OptionsContainer/HorizontalButton" to="." method="_on_horizontal_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/OptionsContainer/DiagonalButton" to="." method="_on_diagonal_button_pressed"]
 [connection signal="timeout" from="Tests/TestsTimer" to="Tests/50SpinsWithoutCost" method="_on_tests_timer_timeout"]
 [connection signal="timeout" from="Tests/TestsTimer" to="Tests/100SpinsWithCost" method="_on_tests_timer_timeout"]
 [connection signal="timeout" from="Tests/TestsTimer" to="Tests/100SpinsWinnerChances" method="_on_tests_timer_timeout"]
+[connection signal="timeout" from="ButtonAnimation/ButtonTimer" to="ButtonAnimation" method="_on_button_timer_timeout"]
+[connection signal="timeout" from="ConfettiAnimation/ConfettiTimer" to="ConfettiAnimation" method="_on_confetti_timer_timeout"]
+[connection signal="timeout" from="ConfettiAnimation/TotalConfettiTimer" to="ConfettiAnimation" method="_on_total_confetti_timer_timeout"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bt14anogtdard"]
+[gd_scene load_steps=11 format=3 uid="uid://bt14anogtdard"]
 
 [ext_resource type="Script" uid="uid://bt7c3x4w7q8wr" path="res://Scripts/Slots/slots_panel.gd" id="1_dmlxd"]
 [ext_resource type="PackedScene" uid="uid://2qv3jg6fwbo" path="res://Scenes/Slots/IconSlot.tscn" id="2_nbwu5"]
@@ -8,6 +8,8 @@
 [ext_resource type="Script" uid="uid://mtrjlfatpx7e" path="res://Scripts/WinControllers/winners_line_types.gd" id="7_4c06h"]
 [ext_resource type="Script" uid="uid://ce4mudykygsh5" path="res://Scripts/Slots/ChancesControllers/slots_controllers.gd" id="7_r3hys"]
 [ext_resource type="Script" uid="uid://dgcgi4wjdadfc" path="res://Scripts/WinControllers/winner_line_control.gd" id="8_r0w0c"]
+[ext_resource type="Script" uid="uid://b7lsvirekq1ej" path="res://Scripts/Slots/Animations/animated_spin.gd" id="9_r0w0c"]
+[ext_resource type="Texture2D" uid="uid://b2ddo4eh1o66h" path="res://Art/Effects/SubSlot.png" id="10_gw2qs"]
 
 [node name="SlotsPanel" type="Node2D"]
 script = ExtResource("1_dmlxd")
@@ -76,3 +78,62 @@ script = ExtResource("7_4c06h")
 
 [node name="WinnerLineControl" type="Node" parent="WinControllers"]
 script = ExtResource("8_r0w0c")
+
+[node name="Animations" type="Node" parent="."]
+
+[node name="AnimatedSpin" type="Node" parent="Animations"]
+script = ExtResource("9_r0w0c")
+
+[node name="RowTimer" type="Timer" parent="Animations/AnimatedSpin"]
+wait_time = 0.3
+
+[node name="RowTimer2" type="Timer" parent="Animations/AnimatedSpin"]
+wait_time = 0.4
+
+[node name="RowTimer3" type="Timer" parent="Animations/AnimatedSpin"]
+wait_time = 0.5
+
+[node name="SpinTimer" type="Timer" parent="Animations"]
+one_shot = true
+
+[node name="Columns" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0.560784)
+
+[node name="SubSlot" type="Sprite2D" parent="Columns"]
+position = Vector2(35, 68)
+scale = Vector2(1, 3.46875)
+texture = ExtResource("10_gw2qs")
+
+[node name="SubSlot2" type="Sprite2D" parent="Columns"]
+position = Vector2(105, 68)
+scale = Vector2(1, 3.46875)
+texture = ExtResource("10_gw2qs")
+
+[node name="SubSlot3" type="Sprite2D" parent="Columns"]
+position = Vector2(175, 68)
+scale = Vector2(1, 3.46875)
+texture = ExtResource("10_gw2qs")
+
+[node name="SubSlot4" type="Sprite2D" parent="Columns"]
+position = Vector2(245, 68)
+scale = Vector2(1, 3.46875)
+texture = ExtResource("10_gw2qs")
+
+[node name="Rows" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0.541176)
+
+[node name="SubSlot" type="Sprite2D" parent="Rows"]
+position = Vector2(142.709, 35)
+rotation = 1.5708
+scale = Vector2(1, 5.73796)
+texture = ExtResource("10_gw2qs")
+
+[node name="SubSlot2" type="Sprite2D" parent="Rows"]
+position = Vector2(142.709, 105)
+rotation = 1.5708
+scale = Vector2(1, 5.73796)
+texture = ExtResource("10_gw2qs")
+
+[connection signal="timeout" from="Animations/AnimatedSpin/RowTimer" to="Animations/AnimatedSpin" method="_on_row_timer_timeout"]
+[connection signal="timeout" from="Animations/AnimatedSpin/RowTimer2" to="Animations/AnimatedSpin" method="_on_row_timer_2_timeout"]
+[connection signal="timeout" from="Animations/AnimatedSpin/RowTimer3" to="Animations/AnimatedSpin" method="_on_row_timer_3_timeout"]

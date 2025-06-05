@@ -5,20 +5,26 @@ extends Node2D
 @onready var points_label : Label = $"CanvasLayer/CurrentPointsContainer/PointsLabel"
 @onready var sum_label : Label = $"CanvasLayer/SumContainer/SumLabel"
 @onready var spin_points_label : Label = $"CanvasLayer/SpinPointsContainer/SpinPointsLabel"
+@onready var confetti_animation : CanvasLayer = $"ConfettiAnimation"
 
 enum line_type {CENTER,HORIZONTAL,DIAGONAL}
 
 var current_line_type = line_type.CENTER
 
 var points :float = 100.0
+@export var confetti : bool = true
 
 func change_slots():
-	var spin_points = slots_panel.change_slots(get_line_type())
+	#var spin_points = slots_panel.change_slots(get_line_type())
+	var spin_points = await slots_panel.spin(get_line_type())
 	
 	points += spin_points
 	
 	points_label.text = "Points: " + str(points)
 	sum_label.text = "+ " + str(spin_points)
+	
+	if confetti:
+		confetti_animation.celebrate(spin_points,subtraction_points())
 
 
 func change_slots_test() -> float:

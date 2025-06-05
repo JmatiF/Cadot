@@ -2,6 +2,7 @@ extends Node
 
 @onready var line_type : Node = $"LineType"
 
+
 var classic_ids = [1, 2, 3, 4, 5, 6]
 var wildcard_ids = [7, 8]
 var bonus_ids = [9]

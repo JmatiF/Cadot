@@ -7,6 +7,8 @@ extends Node2D
 @onready var winner_line_types : Node = $"WinControllers/WinnersLineTypes"
 @onready var winner_line_control : Node = $"WinControllers/WinnerLineControl"
 
+@onready var animated_spin : Node = $"Animations/AnimatedSpin"
+
 var slot_in_use : int = 0
 var added_chances : bool = false
 var line_type
@@ -18,6 +20,7 @@ func _ready() -> void:
 func change_slots(line : int, help : bool = false) -> float:
 	line_type = line_types.get_line_type(line)
 	slots.winner_lights_off()
+	
 	for id in 15:
 		var card = spin_chances.pick_card_group_based()
 		
@@ -38,6 +41,12 @@ func change_slots(line : int, help : bool = false) -> float:
 	else:
 		return 0
 
+func spin(line : int, animation : bool = true, help : bool = false) -> float:
+	if animation:
+		slots.winner_lights_off()
+		return await animated_spin.animated_spin(line)
+	else:
+		return change_slots(line,help)
 
 func set_line(id):
 	if line_type is Array:

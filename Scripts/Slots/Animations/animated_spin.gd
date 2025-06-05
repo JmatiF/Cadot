@@ -26,6 +26,8 @@ func animated_spin(new_line) -> float:
 	await spin_timer.timeout
 	one_shot_row_true()
 	await row_timer3.timeout
+	start_spin_last_timer()
+	await spin_timer.timeout
 	return slots_panel.change_slots(line)
 
 func set_card(row):
@@ -40,6 +42,10 @@ func get_random_1_to_9() -> int:
 
 func start_spin_timer():
 	spin_timer.wait_time = 1
+	spin_timer.start()
+
+func start_spin_last_timer():
+	spin_timer.wait_time = 0.3
 	spin_timer.start()
 
 func start_row_timers():

@@ -235,6 +235,8 @@ wait_time = 0.3
 [node name="TotalConfettiTimer" type="Timer" parent="ConfettiAnimation"]
 one_shot = true
 
+[node name="Music" type="AudioStreamPlayer" parent="."]
+
 [connection signal="pressed" from="CanvasLayer/SpinButtonContainer/SpinButton" to="." method="_on_spin_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/SpinButtonContainer/SpinButton" to="ButtonAnimation" method="_on_spin_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/OptionsContainer/CentralButton" to="." method="_on_central_button_pressed"]

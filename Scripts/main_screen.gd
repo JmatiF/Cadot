@@ -11,11 +11,13 @@ enum line_type {CENTER,HORIZONTAL,DIAGONAL}
 
 var current_line_type = line_type.CENTER
 
-var points :float = 100.0
+var points :float = 1000.0
 @export var confetti : bool = true
 
 func change_slots():
 	#var spin_points = slots_panel.change_slots(get_line_type())
+	if points < 0.0:
+		print("no points c:")
 	var spin_points = await slots_panel.spin(get_line_type())
 	
 	points += spin_points
@@ -61,6 +63,8 @@ func set_points(value: float) -> void:
 
 
 func _on_spin_button_pressed() -> void:
+	if points < 0.0:
+		print("no points c:")
 	points -= subtraction_points()
 	change_slots()
 

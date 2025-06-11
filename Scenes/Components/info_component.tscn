@@ -1,0 +1,110 @@
+[gd_scene load_steps=6 format=3 uid="uid://bd7piaaq1555y"]
+
+[ext_resource type="Script" uid="uid://d2ogn6nx7birr" path="res://Scripts/Components/info_component.gd" id="1_wq0hn"]
+[ext_resource type="Texture2D" uid="uid://cf4ulwpvqn5j" path="res://Art/Info/Captura de pantalla 2025-06-11 183217.png" id="2_sga4g"]
+[ext_resource type="Texture2D" uid="uid://d3e3s6nka60hr" path="res://Art/Info/Captura de pantalla 2025-06-11 183230.png" id="3_dodi5"]
+[ext_resource type="Texture2D" uid="uid://vdi7qvsyeqel" path="res://Art/Icons/Bonuses/Bunny.png" id="4_qi6hn"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qj6yv"]
+font_size = 20
+font_color = Color(0.964301, 0, 0.413544, 1)
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[node name="InfoComponent" type="Node"]
+script = ExtResource("1_wq0hn")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.461029, 0.434778, 0.487146, 1)
+
+[node name="SpanishCanvas" type="CanvasLayer" parent="."]
+
+[node name="Page1" type="CanvasLayer" parent="SpanishCanvas"]
+
+[node name="Text" type="BoxContainer" parent="SpanishCanvas/Page1"]
+offset_left = 22.0
+offset_right = 1151.0
+offset_bottom = 127.0
+
+[node name="Label" type="Label" parent="SpanishCanvas/Page1/Text"]
+layout_mode = 2
+text = "
+En Cadot, los puntos se cuentan de izquierda a derecha. La cantidad de puntos que obtengas es igual a la suma de cartas ganadoras 
+y comodines/modificadores que obtengas.
+
+Las cartas clásicas son las siguientes:"
+
+[node name="CardL" type="BoxContainer" parent="SpanishCanvas/Page1"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 19.0
+offset_top = -232.0
+offset_right = 1129.0
+offset_bottom = -82.0
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="SpanishCanvas/Page1/CardL"]
+layout_mode = 2
+text = "Las cartas clasicas"
+label_settings = SubResource("LabelSettings_qj6yv")
+
+[node name="Label2" type="Label" parent="SpanishCanvas/Page1/CardL"]
+layout_mode = 2
+text = "                                      Los comodines"
+label_settings = SubResource("LabelSettings_qj6yv")
+
+[node name="Label3" type="Label" parent="SpanishCanvas/Page1/CardL"]
+layout_mode = 2
+text = "                     Los bonificadores"
+label_settings = SubResource("LabelSettings_qj6yv")
+
+[node name="CardImg" type="BoxContainer" parent="SpanishCanvas/Page1"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -28.0
+offset_right = 1150.0
+offset_bottom = 171.0
+grow_vertical = 2
+
+[node name="Clasics" type="Sprite2D" parent="SpanishCanvas/Page1/CardImg"]
+position = Vector2(200, 0)
+texture = ExtResource("2_sga4g")
+
+[node name="WildCard" type="Sprite2D" parent="SpanishCanvas/Page1/CardImg"]
+position = Vector2(520, -45)
+texture = ExtResource("3_dodi5")
+
+[node name="Bonuses" type="Sprite2D" parent="SpanishCanvas/Page1/CardImg"]
+position = Vector2(700, -60)
+texture = ExtResource("4_qi6hn")
+
+[node name="Text2" type="BoxContainer" parent="SpanishCanvas/Page1"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -564.0
+offset_top = -273.0
+offset_right = 565.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="SpanishCanvas/Page1/Text2"]
+layout_mode = 2
+text = "Los puntos de las mismas se dividen de esta manera:
+
+Las clasicas valen por 1 punto.
+
+Los comodines sirven por cualquier carta y valen por 4 puntos
+
+Los bonificadores sirven por cualquier carta, valen por 5 puntos y 
+ademas multiplican la cantidad de puntos en el momento que aparece por 2"

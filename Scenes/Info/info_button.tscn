@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtyvtq26eilbf"]
+
+[ext_resource type="Script" uid="uid://fy3ncg4nug85" path="res://Scripts/Info/info_button.gd" id="1_r5m41"]
+
+[node name="InfoButton" type="Button"]
+offset_right = 73.0
+offset_bottom = 56.0
+text = "Info"
+script = ExtResource("1_r5m41")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

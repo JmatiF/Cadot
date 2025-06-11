@@ -118,7 +118,7 @@ offset_bottom = 615.0
 
 [node name="PointsLabel" type="Label" parent="CanvasLayer/CurrentPointsContainer"]
 layout_mode = 2
-text = "Points: 100"
+text = "Points: 1000"
 label_settings = SubResource("LabelSettings_0prsd")
 
 [node name="SumContainer" type="BoxContainer" parent="CanvasLayer"]
@@ -233,6 +233,7 @@ texture = ExtResource("8_rm1n3")
 wait_time = 0.3
 
 [node name="TotalConfettiTimer" type="Timer" parent="ConfettiAnimation"]
+wait_time = 2.0
 one_shot = true
 
 [node name="Music" type="AudioStreamPlayer" parent="."]

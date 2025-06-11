@@ -1,9 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://bd7piaaq1555y"]
+[gd_scene load_steps=10 format=3 uid="uid://bd7piaaq1555y"]
 
 [ext_resource type="Script" uid="uid://d2ogn6nx7birr" path="res://Scripts/Components/info_component.gd" id="1_wq0hn"]
 [ext_resource type="Texture2D" uid="uid://cf4ulwpvqn5j" path="res://Art/Info/Captura de pantalla 2025-06-11 183217.png" id="2_sga4g"]
 [ext_resource type="Texture2D" uid="uid://d3e3s6nka60hr" path="res://Art/Info/Captura de pantalla 2025-06-11 183230.png" id="3_dodi5"]
 [ext_resource type="Texture2D" uid="uid://vdi7qvsyeqel" path="res://Art/Icons/Bonuses/Bunny.png" id="4_qi6hn"]
+[ext_resource type="Texture2D" uid="uid://c8ccoicrfgheg" path="res://Art/Info/1.png" id="5_2qhr0"]
+[ext_resource type="Texture2D" uid="uid://dfdrw8d3xtrvm" path="res://Art/Info/3.png" id="6_x01oc"]
+[ext_resource type="Texture2D" uid="uid://itcjbmoyc4ar" path="res://Art/Info/5.png" id="7_83klq"]
+[ext_resource type="Texture2D" uid="uid://4b6s2txa3js" path="res://Art/Info/5.2.png" id="8_28cq3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_qj6yv"]
 font_size = 20
@@ -23,8 +27,10 @@ grow_vertical = 2
 color = Color(0.461029, 0.434778, 0.487146, 1)
 
 [node name="SpanishCanvas" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Page1" type="CanvasLayer" parent="SpanishCanvas"]
+visible = false
 
 [node name="Text" type="BoxContainer" parent="SpanishCanvas/Page1"]
 offset_left = 22.0
@@ -35,7 +41,7 @@ offset_bottom = 127.0
 layout_mode = 2
 text = "
 En Cadot, los puntos se cuentan de izquierda a derecha. La cantidad de puntos que obtengas es igual a la suma de cartas ganadoras 
-y comodines/modificadores que obtengas.
+y comodines/bonificadores que obtengas.
 
 Las cartas clásicas son las siguientes:"
 
@@ -65,6 +71,7 @@ text = "                     Los bonificadores"
 label_settings = SubResource("LabelSettings_qj6yv")
 
 [node name="CardImg" type="BoxContainer" parent="SpanishCanvas/Page1"]
+z_index = -1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
@@ -74,6 +81,7 @@ offset_bottom = 171.0
 grow_vertical = 2
 
 [node name="Clasics" type="Sprite2D" parent="SpanishCanvas/Page1/CardImg"]
+z_index = -1
 position = Vector2(200, 0)
 texture = ExtResource("2_sga4g")
 
@@ -102,9 +110,120 @@ grow_vertical = 0
 layout_mode = 2
 text = "Los puntos de las mismas se dividen de esta manera:
 
-Las clasicas valen por 1 punto.
+  *  Las clasicas valen por 1 punto.
 
-Los comodines sirven por cualquier carta y valen por 4 puntos
+  *  Los comodines sirven por cualquier carta y valen por 4 puntos
 
-Los bonificadores sirven por cualquier carta, valen por 5 puntos y 
-ademas multiplican la cantidad de puntos en el momento que aparece por 2"
+  *  Los bonificadores sirven por cualquier carta, valen por 5 puntos y 
+      ademas multiplican la cantidad de puntos en el momento que aparece por 2"
+
+[node name="Page2" type="CanvasLayer" parent="SpanishCanvas"]
+visible = false
+
+[node name="Text" type="BoxContainer" parent="SpanishCanvas/Page2"]
+offset_left = 22.0
+offset_right = 1151.0
+offset_bottom = 127.0
+
+[node name="Label" type="Label" parent="SpanishCanvas/Page2/Text"]
+layout_mode = 2
+text = "
+A la hora de jugar, dependiendo del modo de juego seleccionado tendrás ciertas líneas ganadoras, en estas líneas la primera 
+carta clásica que aparezca será tu carta ganadora. Y la combinación de la misma y los comodines/bonificadores dictan la 
+cantidad de puntos que ganaras.
+
+Suponiendo que estamos jugando a la línea central, si la primera carta es un comodín o bonificador, entonces esperará 
+a la siguiente carta clásica. Luego la designa como carta ganadora. Véase el ejemplo:
+"
+
+[node name="Img" type="BoxContainer" parent="SpanishCanvas/Page2"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 21.0
+offset_top = -63.0
+offset_right = 1153.0
+offset_bottom = 64.0
+grow_vertical = 2
+
+[node name="Example" type="Sprite2D" parent="SpanishCanvas/Page2/Img"]
+position = Vector2(300, 130)
+texture = ExtResource("5_2qhr0")
+
+[node name="Text2" type="BoxContainer" parent="SpanishCanvas/Page2"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -564.0
+offset_top = -84.0
+offset_right = 565.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="SpanishCanvas/Page2/Text2"]
+layout_mode = 2
+text = "Si la siguiente carta hubiese sido un comodín/bonificador o otra cereza/cherry, la cantidad de puntos hubiese seguido aumentando.
+"
+
+[node name="Page3" type="CanvasLayer" parent="SpanishCanvas"]
+
+[node name="Text" type="BoxContainer" parent="SpanishCanvas/Page3"]
+offset_left = 22.0
+offset_right = 1151.0
+offset_bottom = 127.0
+
+[node name="Label" type="Label" parent="SpanishCanvas/Page3/Text"]
+layout_mode = 2
+text = "
+Como previamente se mencionó, las líneas comienzan de izquierda a derecha. 
+A su vez el usuario tiene la posibilidad de elegir en cuantas líneas jugará.
+
+  *  Para la línea central o una línea, solo se utilizaran las mismas ranuras centrales. Como se puede observar en la imagen anterior.
+
+  *  Para la horizontal o tres líneas, se utilizarán todas las ranuras consecuentes de izquierda a derecha.
+
+  *  Para la diagonal o cinco líneas, se utilizan todas las ranuras de izquierda a derecha, además de un juego diagonal de V y Ʌ
+"
+
+[node name="Img" type="BoxContainer" parent="SpanishCanvas/Page3"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 21.0
+offset_top = -30.0
+offset_right = 1153.0
+offset_bottom = 64.0
+grow_vertical = 2
+
+[node name="Example" type="Sprite2D" parent="SpanishCanvas/Page3/Img"]
+position = Vector2(180, 70)
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("6_x01oc")
+
+[node name="Example2" type="Sprite2D" parent="SpanishCanvas/Page3/Img"]
+position = Vector2(530, 70)
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("7_83klq")
+
+[node name="Example4" type="Sprite2D" parent="SpanishCanvas/Page3/Img"]
+position = Vector2(860, 70)
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("8_28cq3")
+
+[node name="Text2" type="BoxContainer" parent="SpanishCanvas/Page3"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -564.5
+offset_top = -257.0
+offset_right = 564.5
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="SpanishCanvas/Page3/Text2"]
+layout_mode = 2
+text = "Ganar es tan fácil como obtener más puntos de los que perdiste en la tirada, pero no por eso es fácil."

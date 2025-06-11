@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://b0xi60msqjyog"]
+[gd_scene load_steps=13 format=3 uid="uid://b0xi60msqjyog"]
 
 [ext_resource type="Script" uid="uid://cihdljcuinfrk" path="res://Scripts/main_screen.gd" id="1_0prsd"]
 [ext_resource type="PackedScene" uid="uid://bt14anogtdard" path="res://Scenes/Slots/SlotsPanel.tscn" id="1_s7h0p"]
 [ext_resource type="Texture2D" uid="uid://bg022fok1ixvx" path="res://Art/Spin/Spin.png" id="3_a6epe"]
 [ext_resource type="Script" uid="uid://v7fsco1qh6fp" path="res://Scripts/Tests/50_spins_without_cost.gd" id="4_ip4yt"]
+[ext_resource type="PackedScene" uid="uid://dtyvtq26eilbf" path="res://Scenes/Info/info_button.tscn" id="4_y28kv"]
 [ext_resource type="Script" uid="uid://bdcsr4oa8q2ci" path="res://Scripts/Tests/100_spins_with_cost.gd" id="5_xg8v3"]
 [ext_resource type="Script" uid="uid://ccimuikapsk0q" path="res://Scripts/Tests/100_spins_winner_chances.gd" id="6_a6epe"]
 [ext_resource type="Script" uid="uid://d2y2peng5bjp0" path="res://Scripts/MainScreenAnimations/button_animation.gd" id="7_3bkv3"]
@@ -152,6 +153,21 @@ layout_mode = 2
 text = "Points to
 spin: 10"
 label_settings = SubResource("LabelSettings_ip4yt")
+
+[node name="InfoButtonContainer" type="BoxContainer" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -131.0
+offset_bottom = 60.0
+grow_horizontal = 0
+alignment = 1
+vertical = true
+
+[node name="InfoButton" parent="CanvasLayer/InfoButtonContainer" instance=ExtResource("4_y28kv")]
+layout_mode = 2
+text = "Spanish
+Info"
 
 [node name="Tests" type="Node" parent="."]
 

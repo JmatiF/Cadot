@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://dax5gg1ilh08"]
+
+[ext_resource type="Script" uid="uid://h1eccak1hwol" path="res://Scripts/Components/game_button_component.gd" id="1_24xrp"]
+
+[node name="GameButtonComponent" type="BoxContainer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -54.0
+offset_bottom = 40.0
+grow_horizontal = 0
+alignment = 1
+
+[node name="GameButtonComponent" type="Button" parent="."]
+layout_mode = 2
+text = "Back to Game"
+script = ExtResource("1_24xrp")
+
+[connection signal="pressed" from="GameButtonComponent" to="GameButtonComponent" method="_on_pressed"]

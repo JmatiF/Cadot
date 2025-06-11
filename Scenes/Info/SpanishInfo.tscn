@@ -1,46 +1,51 @@
 [gd_scene load_steps=4 format=3 uid="uid://bsfp0153rl87b"]
 
 [ext_resource type="Script" uid="uid://bqpq3xrm4bhhd" path="res://Scripts/Info/spanish_info.gd" id="1_b0wxy"]
-[ext_resource type="Script" uid="uid://h1eccak1hwol" path="res://Scripts/Info/game_button.gd" id="2_c2vpd"]
+[ext_resource type="PackedScene" uid="uid://dax5gg1ilh08" path="res://Scenes/Components/game_button_component.tscn" id="3_b0wxy"]
 [ext_resource type="PackedScene" uid="uid://bd7piaaq1555y" path="res://Scenes/Components/info_component.tscn" id="3_efrmc"]
 
 [node name="SpanishInfo" type="CanvasLayer"]
 script = ExtResource("1_b0wxy")
 
+[node name="InfoComponent" parent="." instance=ExtResource("3_efrmc")]
+
 [node name="NextPage" type="BoxContainer" parent="."]
+z_index = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -40.0
-offset_top = -20.0
-offset_bottom = 20.0
+offset_left = -87.0
+offset_top = -72.0
+offset_bottom = 55.0
 grow_horizontal = 0
 grow_vertical = 2
 alignment = 1
 
-[node name="Button" type="Button" parent="NextPage"]
+[node name="NextButton" type="Button" parent="NextPage"]
 layout_mode = 2
-text = "Next Page"
+text = "Next Page
+>>>>>>>"
 
 [node name="PrevPage" type="BoxContainer" parent="."]
+visible = false
+z_index = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_top = -20.0
-offset_right = 40.0
-offset_bottom = 20.0
+offset_top = -82.0
+offset_right = 84.0
+offset_bottom = 72.0
 grow_vertical = 2
 alignment = 1
 
-[node name="Button" type="Button" parent="PrevPage"]
+[node name="PrevButton" type="Button" parent="PrevPage"]
 layout_mode = 2
 text = "Prev Page"
 
-[node name="GameButton" type="Button" parent="."]
-offset_right = 8.0
-offset_bottom = 8.0
-script = ExtResource("2_c2vpd")
+[node name="GameButtonComponent" parent="." instance=ExtResource("3_b0wxy")]
+z_index = 1
 
-[node name="InfoComponent" parent="." instance=ExtResource("3_efrmc")]
+[connection signal="pressed" from="NextPage/NextButton" to="." method="_on_next_button_pressed"]
+[connection signal="pressed" from="PrevPage/PrevButton" to="." method="_on_prev_button_pressed"]
